@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="logoConteiner rot">
+            <!-- <img class="rot" src="./img/Graal.jpg" alt=""> -->
+            </div>
+        <div class="controlBox"> 
+            Напрям    
+            <div class="button" id="Direction">                                
+                <img id="DirectionImg" src="./img/button.png" alt="direction">
+                <span id="Forward">Вперед</span>
+                <span id="Stop">Стоп</span>
+                <span id="Back">Назад</span>
+            </div>
+            Швидкість
+            <div class="button" id="Speed">
+                <img id="SpeedImg" src="./img/button.png" alt="Speed">
+                <span id="Speed0">0</span>
+                <span id="Speed1">1</span>
+                <span id="Speed2">2</span>
+            </div>            
+        </div>
+    </div>    
+    <script>
+
+        let speed = 10000;
+        direction = "Stop";
+
+        const Forward = document.getElementById("Forward");
+        const Stop = document.getElementById("Stop");
+        const Back = document.getElementById("Back");
+
+        const Speed0 = document.getElementById("Speed0");
+        const Speed1 = document.getElementById("Speed1");
+        const Speed2 = document.getElementById("Speed2");
+        
+        const DirectionImg = document.getElementById("DirectionImg");
+        const SpeedImg = document.getElementById("SpeedImg");
+
+        Forward.addEventListener("click", clickForward);
+        Stop.addEventListener("click", clickStop);
+        Back.addEventListener("click", clickBack);
+
+        Speed0.addEventListener("click", clickSpeed0);
+        Speed1.addEventListener("click", clickSpeed1);
+        Speed2.addEventListener("click", clickSpeed2);
+
+        const LogoConteiner = document.querySelector('.logoConteiner');
+
+        function createAnimation(direction, speed){
+
+            let animation, timing;
+
+            if (direction === "Forward") {
+                animation = [
+                { transform: "rotate(0deg)" },
+                { transform: "rotate(360deg)" },
+                ]
+            } else if (direction === "Back") {
+                animation = [     
+                { transform: "rotate(360deg)" },
+                { transform: "rotate(0deg)" },
+                ]
+            }            
+                timing = {
+                duration: speed,
+                iterations: Infinity,
+            };       
+            LogoConteiner.animate(animation, timing);     
+        }
+
+        function clickForward(){
+            DirectionImg.style.transform = "rotate(-90deg)";       
+            direction = "Forward";
+            createAnimation(direction, speed);          
+        }
+
+        function clickStop(){
+            DirectionImg.style.transform = "";       
+            direction = "Stop";      
+            LogoConteiner.getAnimations().forEach(animation => animation.cancel());                    
+        }
+
+        function clickBack(){
+            DirectionImg.style.transform = "rotate(90deg)";          
+            direction = "Back";
+            createAnimation(direction, speed); 
+        }
+
+        function clickSpeed0(){
+            SpeedImg.style.transform = "rotate(-90deg)";
+            speed = 0;
+            LogoConteiner.getAnimations().forEach(animation => animation.cancel());     
+        }
+
+        function clickSpeed1(){
+            SpeedImg.style.transform = "";
+            speed = 10000;
+            createAnimation(direction, speed);
+        }
+
+        function clickSpeed2(){
+            SpeedImg.style.transform = "rotate(90deg)";
+            speed = 4000;
+            createAnimation(direction, speed);
+        }
+
+    </script>
+</body>
+</html>

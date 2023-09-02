@@ -1,0 +1,122 @@
+
+.wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap-reverse;
+}
+
+.logoConteiner {
+    width: 300px; 
+    height: 300px;
+    background-image: url("./img/Graal.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;  
+    border-radius: 50%;      
+}
+
+.controlBox {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 50px;
+    width: 50px; 
+}
+
+.button #Forward {
+    position: absolute;
+    top: 35%;
+    left: -110%;
+    cursor: pointer;
+}
+
+.button #Stop {
+    position: absolute;
+    top: -35%;
+    right: 15%;
+    cursor: pointer;
+}
+
+.button #Back {
+    position: absolute;
+    top: 35%;
+    right: -95%;
+    cursor: pointer;
+}
+
+.button #Speed0 {
+    position: absolute;
+    top: 35%;
+    left: -24%;
+    cursor: pointer;
+}
+
+.button #Speed1 {
+    position: absolute;
+    top: -35%;
+    right: 45%;
+    cursor: pointer;
+}
+
+.button #Speed2 {
+    position: absolute;
+    top: 35%;
+    right: -25%;
+    cursor: pointer;
+}
+
+
+  
+
+  rot {
+    animation: 4s linear 0s normal none infinite running rotForward;
+
+    /* animation: 1s linear 0s  normal infinite running rot; */
+
+    /* -webkit-animation: 1s linear 0s normal none infinite running rot; */
+    /* width: 100px; */
+  }
+  @keyframes rot {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  /* @-webkit-keyframes rot {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  } */
+
+  @keyframes rotForward {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  /* @-webkit-keyframes rot {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  } */
